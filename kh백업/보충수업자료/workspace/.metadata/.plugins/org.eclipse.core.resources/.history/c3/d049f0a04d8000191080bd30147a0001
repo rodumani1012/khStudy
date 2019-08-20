@@ -1,0 +1,16 @@
+package exception.ex;
+
+public class Exception1_1 {
+	public static void main(String[] args) {
+		
+		//예외발생
+		try {
+			throw new Exception();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+}

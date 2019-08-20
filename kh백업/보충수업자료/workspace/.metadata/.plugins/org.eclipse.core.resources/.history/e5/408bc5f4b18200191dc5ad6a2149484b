@@ -1,0 +1,38 @@
+package io.data.model.dao;
+
+import java.io.DataOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class DataIoTest {
+	
+	public DataIoTest() {}
+	
+	
+	//DataInput/OutputStream -> 바이트, 보조 스트림이다.
+	//데이터를 읽느데 1byte 단위X , 기본자료형(8개),String 단위로 읽고쓴다.
+	
+	public void addDate() {
+		
+		try(DataOutputStream dout = new DataOutputStream(
+								new FileOutputStream("member.txt"))){
+			
+			//write 엄창 많다!!!! 자료형별로 존재
+			dout.writeUTF("이창진");
+			dout.writeInt(20);
+			dout.writeChar('M');
+			dout.writeDouble(188.5);
+			
+			
+			
+			
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+	
+	
+}

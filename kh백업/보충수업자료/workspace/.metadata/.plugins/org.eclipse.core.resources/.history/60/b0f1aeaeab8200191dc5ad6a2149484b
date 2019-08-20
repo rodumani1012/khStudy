@@ -1,0 +1,8 @@
+package io.buffered.run;
+
+public class BufferedPrec {
+	public static void main(String[] args) {
+
+	}
+
+}

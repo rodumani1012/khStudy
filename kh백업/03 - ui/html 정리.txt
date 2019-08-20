@@ -1,0 +1,13 @@
+DOM : Document Object Model
+
+document -> object
+(nodeList 또는 node 1개)
+
+document.querySelectorAll("css 선택자");
+			ex) "p input"   : p태그 아래 모든 input
+			    "p > input" : p태그 자식인 input
+document.getElementById("id");
+
+document.getElementsByName("name");
+
+document.getElementsByTagName("tag name");

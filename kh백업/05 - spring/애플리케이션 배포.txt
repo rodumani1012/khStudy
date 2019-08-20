@@ -1,0 +1,28 @@
+WAS 설치 및 웹 애플리케이션 파일 배포 절차	
+1.톰캣 다운로드
+2.톰켓설치 및 port 설정
+3.JDK 경로와 톰켓 서버를 설치할 경로지정
+4.tomcatXXX.exe 나 startup.bat(linux인 경우 startup.sh) 실행
+5.이클립스에서 작성한 웹 프로젝트를 war 파일로 export
+6.톰켓폴더/webapps 안에 프로젝트.war파일 저장
+7.톰켓 서버를 start
+8.브라우저에서 url을 통해 접속
+
+gitHub를 이용한 웹 애플리케이션 형상관리 절차
+1.gitHub에 id, pw, email 입력하여 회원가입
+2.email 확인하여 github 가입인증
+3.원격 저장소 생성
+4.포크하여 다른 사람의 원격 저장소를 복사
+5.프로젝트에 git 적용
+6.브랜치를 생성하여 작업후 synchronize 및 merge 를 수행
+7.브랜치는 새로 파일을 작성하고 commit 및 push 를 수행
+8.마스터는 pull 또는 pull request 를 수행
+9.'Able to merge'가 표시되면 Merge pull request를 수행
+
+이클립스에서 작성한 웹프로젝트를 배포파일로 만들기 위해 사용하는 명령어 선택 순서
+웹 프로젝트 선택 - export - Web -WAR file - Destination 설정 - Export source files 체크 - Finish
+
+리눅스에서 톰캣 서버를 제어하기 위해 사용되는 파일
+startup.sh
+shutdown.sh
+catalina.sh

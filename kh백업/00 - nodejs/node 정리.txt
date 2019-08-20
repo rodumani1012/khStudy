@@ -1,0 +1,24 @@
+npm : node package manager
+- NPMSearch에서 탐색가능한 node.js 패키지/모듈 저장소
+- node.js 패키지 설치/호환성 관리
+
+1. npm init
+
+2. npm install express [-s or -g]
+-s 는 save 현재 프로젝트에서만 
+-g 다른 프로젝트에서도 사용할 수 있도록
+
+3. npm (명령어) help
+
+4. npm run : scripts 안에서 start를 제외한 나머지를 읽음
+
+5. npm start : package.json에서 start의 내용을 읽음
+
+* router : 네트워크와 네트워크 간의 경로를 설정해주는 장치
+
+view engine Template 의 종류
+- Haml
+- Jade
+- EJS
+- Coffeecup
+- jquery Template

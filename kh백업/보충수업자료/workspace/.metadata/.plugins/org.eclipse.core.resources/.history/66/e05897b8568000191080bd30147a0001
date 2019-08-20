@@ -1,0 +1,50 @@
+package exception.ex;
+
+import java.util.Scanner;
+
+public class Exception3 {
+	public static void main(String[] args) {
+		// 배열만들겁니다
+		// 배열 크기를 입력받아서 생성 해볼겁니다.
+
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("배열을 만들자!");
+		int arr[];
+
+		// //[1]
+		// System.out.println("배열 크기를 입력(양수): ");
+		// int length = sc.nextInt();
+		//
+		// //[2]
+		// try {
+		// arr = new int[length];
+		// }catch(NegativeArraySizeException e) {
+		// System.out.println("음수?? 잘못했어~");
+		// }
+		//
+		//
+		while (true) {
+			System.out.println("배열 크기를 입력(양수): ");
+			int length = sc.nextInt();
+
+		if(length>0) {
+			arr = new int[length];
+			break;
+		} else {
+			System.out.println("배열 크기 잘못입력햇다오~");
+		}
+
+		}
+		System.out.println("프로그램 종료!!!!");
+
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+}

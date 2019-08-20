@@ -1,0 +1,14 @@
+package io.buffered.run;
+
+public class BufferedPrec {
+	public static void main(String[] args) {
+		byte[] bt = new byte[1024];
+		
+		//BufferedInputStrem(System.in, 1024)
+		
+		//FileOutputStream("input.txt");
+		
+		
+	}
+
+}

@@ -1,0 +1,93 @@
+Java : Object Oriented Programing language
+Object : class -> memory -> instance
+
+type 변수 = 값;
+- 기본 : call by value;
+  - 정수형 byte short int long
+  - 실수형 float double 
+  - 문자형 char
+  - 논리형 boolean
+  - 문자열 String
+
+- 참조 : call by reference;
+wrapper class
+
+-> 추상화 : 공통되는 하나의 추상적인 큰 개념
+-> 캡슐화 : 기능 은닉(코드 은닉) -> 사용
+-> 상속 : 상위 객체의 모든 것을 하위 객체가 물려받음
+-> 다형성 : 같은 이름으로 다른행위를 함. overloading
+
+overriding 재정의
+
+class { 
+	class 변수
+	instance 변수 - 객체 하나에만
+    method(기능)
+	명령문's 집합
+  접근제한자 메모리영역        리턴타입 이름(파라미터){}
+  public     static/non-static void     이름(파라미터 : 메소드에 전달된 값을 메소드 내부에서 사용하기위한 변수)
+  protected  class.메소드      그외	     (아규먼트 : 메소드 외부에서 전달된 값)
+  default    레퍼런스.메소드
+  private
+
+ constructor : 멤버변수 초기화, 객체 생성
+}
+
+controll
+-> 조건문
+   if(조건) { 명령
+   } else if (조건) { 명령
+   } else { 명령
+   }
+   
+   switch(조건) {
+   case 값:
+	명령;
+	break;
+   default :
+	break;
+
+-> 반복문
+  while (조건){ 명령
+ }
+
+  do { 명령;
+  } while (조건);
+
+  for(초;조;증;) {
+	명령
+  }
+
+Array : 같은 type 값을 효과적으로 관리하는 객체
+	- 크기 고정
+	- 깊은 값 복사, 얕은 값 복사
+Collection : 값을 효과적으로 관리하는 객체
+	List Set Map
+  순서   O    X   X
+  중복   O    X  k:x / v:o
+
+Map.entry
+Iterator // hasNext() / next()
+
+generic -> type 강제
+
+abstract / interface 3/11 19:00
+
+extends : class 단일 상속
+implements : interface 다중 상속
+
+exception
+- runtime : 실행할 때(프로그래머 잘못)
+- checked : 컴파일 시
+
+input/output (IO)
+~stream : 연속적인 데이터의 흐름(byte)
+
+program : 실행할 수 있는 파일(메모장.exe)
+process : 실행되고 있는 파일(열려진 메모장)
+thread : 프로세스 내부에서 실행되고 있는 작업 단위
+
+URI = URL + URN;
+tcp : 요청 -> 응답 -> 요청 -> 응답 ...
+udp : 요청 -> 요청 -> 요청 -> 요청 ... ※응답은 없음
+

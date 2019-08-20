@@ -1,0 +1,149 @@
+use mongodb_tutorial
+db.book.insert({"name":"MongoDB Tutorial","author":"velopert"});
+db.createCollection("articles",{
+... capped:true,
+... size:6142800,
+... max:10000
+... })
+db.books.insert({"name":"Mongo Guide","author":"kh"})
+
+db.books.insert([
+{"name":"Book1","author":"kh"},
+{"name":"Book2","author":"kh"}
+]);
+
+
+
+
+
+
+
+
+///////////////////////////////////////
+db.articles.insert([
+  {
+    "title": "article01",
+    "content": "content01",
+    "writer": "kh1",
+    "likes": 0,
+    "comments": []
+  },
+  {
+    "title": "article02",
+    "content": "content02",
+    "writer": "kh2",
+    "likes": 23,
+    "comments": [
+      {
+        "name": "Bravo",
+        "message": "Hey Man!"
+      }
+    ]
+  },
+ {
+    "title": "article03",
+    "content": "content03",
+    "writer": "kh3",
+    "likes": 40,
+    "comments": [
+      {
+        "name": "Charlie",
+        "message": "Hey Man!"
+      },
+      {
+        "name": "Delta",
+        "message": "Hey Man!"
+      }
+    ]
+  }
+])
+
+
+
+
+
+//////////////////////////////////////////
+
+db.articles.find( { "writer": "kh1" } ).pretty()
+db.articles.find({"likes": {$lte: 30}}).pretty()
+db.articles.find( { "likes": { $gt: 10, $lt: 30 } } ).pretty()
+db.articles.find( { $and: [ { "writer": "kh1" }, { "likes": { $lt: 10 } } ] } ).pretty()
+db.articles.find( { $where: "this.comments.length == 0" } ).pretty()
+db.articles.find( { "comments": { $elemMatch: { "name": "Charlie" } } } ).pretty()
+db.articles.find( { } , { "_id": false, "title": true, "content": true } ).pretty()
+db.articles.find({"title": "article03"}, {comments: {$slice: 1}}).pretty()
+
+
+///////////////////////////////////////
+db.orders.insert(
+
+[
+    { "_id": 1, "item": { "category": "cake", "type": "chiffon" }, "amount": 10 },
+    { "_id": 2, "item": { "category": "cookies", "type": "chocolate chip" }, "amount": 50 },
+    { "_id": 3, "item": { "category": "cookies", "type": "chocolate chip" }, "amount": 15 },
+    { "_id": 4, "item": { "category": "cake", "type": "lemon" }, "amount": 30 },
+    { "_id": 5, "item": { "category": "cake", "type": "carrot" }, "amount": 20 },
+    { "_id": 6, "item": { "category": "brownies", "type": "blondie" }, "amount": 10 }
+])
+
+///////////////////////////////////////////
+db.orders.find().sort( { "_id": 1 } )
+db.orders.find().sort( { "amount": 1, "_id": -1 } )
+db.orders.find().limit(3)
+db.orders.find().skip(2)
+
+
+/////////////////////////////////////////////
+db.people.insert( [
+    { name: "Abet", age: 19 },
+    { name: "Betty", age: 20 },
+    { name: "Charlie", age: 23, skills: [ "mongodb", "nodejs"] },
+    { name: "David", age: 23, score: 20 }
+])
+///////////////////////////////////////////
+db.people.update( { name: "Abet" }, { $set: { age: 20 } } )
+db.people.update( { name: "Betty" }, { "name": "Betty 2nd", age: 1 })
+db.people.update( { name: ¡°David¡± }, { $unset: { score: 1 } } )
+db.people.update( { name: "Elly" }, { name: "Elly", age: 17 }, { upsert: true } )
+db.people.update(
+... { age: { $lte: 20 } },
+... { $set: { score: 10 } },
+... { multi: true }
+... )
+db.people.update(
+... { name: "Charlie" },
+... { $push: { skills: "angularjs" } }
+... )
+db.people.update(
+... { name: "Charlie" },
+... { $pull: { skills: "mongodb" } }
+... )
+db.people.update(
+... { name: "Charlie" },
+... { $pull: { skills: { $in: ["angularjs", "java" ] } } }
+... )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

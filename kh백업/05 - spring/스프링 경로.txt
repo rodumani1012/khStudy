@@ -1,0 +1,8 @@
+${requestScope['javax.servlet.forward.context_path']}
+
+
+request.getAttribute("javax.servlet.forward.request_uri"); 
+request.getAttribute("javax.servlet.forward.context_path");
+request.getAttribute("javax.servlet.forward.servlet_path"); 
+request.getAttribute("javax.servlet.forward.path_info"); 
+request.getAttribute("javax.servlet.forward.query_string");

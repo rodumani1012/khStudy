@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="home.mapper">
+
+	<select id="login_chk" parameterType="map" resultType="user_info_dto">
+		SELECT * FROM USER_INFO WHERE USER_ID = #{user_id} AND USER_PW = #{user_pw}
+	</select>
+	<select id="id_chk" parameterType="map" resultType="user_info_dto">
+		SELECT * FROM USER_INFO WHERE USER_ID = #{user_id}
+	</select>
+	<select id="nick_chk" parameterType="map" resultType="user_info_dto">
+		SELECT * FROM USER_INFO WHERE USER_NICKNAME = #{user_nickname}
+	</select>
+	<insert id="signup" parameterType="user_info_dto">
+		INSERT INTO USER_INFO VALUES(USERSEQ.NEXTVAL ,#{user_id}, #{user_pw}, #{user_name}, #{user_email}, #{user_nickname}, 'N', 'USER', SYSDATE, NULL)
+	</insert>
+	<select id="login_chk_sns" parameterType="map" resultType="user_info_dto">
+		SELECT * FROM USER_INFO WHERE USER_ID = #{user_id}
+	</select>
+
+	<select id="regist_chk" parameterType="map" resultType="user_info_dto">
+		SELECT * FROM USER_INFO WHERE USER_ID = #{user_id}
+	</select>
+	<insert id="regist_sns" parameterType="user_info_dto">
+		INSERT INTO USER_INFO(USER_NUM, USER_ID, USER_NAME, USER_EMAIL, USER_NICKNAME, USER_ENABLED, USER_GRADE, USER_DATE_CREATE, USER_DATE_UPDATE)
+		 VALUES(USERSEQ.NEXTVAL, #{user_id}, #{user_name},	#{user_email}, #{user_nickname}, 'N', 'USER', SYSDATE,	NULL)
+	</insert>
+	<update id="update_user_info" parameterType="user_info_dto">
+		UPDATE USER_INFO SET USER_NICKNAME = #{user_nickname}, USER_EMAIL = #{user_email}
+		WHERE USER_ID = #{user_id}
+	</update>
+	<update id="update_user_pw" parameterType="user_info_dto">
+		UPDATE USER_INFO SET USER_PW = #{user_pw}
+		WHERE USER_ID = #{user_id}
+	</update>
+	<delete id="member_withdraw" parameterType="user_info_dto">
+		DELETE FROM USER_INFO WHERE USER_ID = #{user_id}
+	</delete>
+</mapper>

@@ -1,0 +1,47 @@
+package exception.ex;
+
+import java.util.Scanner;
+
+public class Exception3 {
+	public static void main(String[] args) {
+		//배열만들겁니다
+		//배열 크기를 입력받아서 생성 해볼겁니다.
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("배열을 만들자!");
+		int arr[];
+		
+		
+		//[1]
+		System.out.println("배열 크기를 입력(양수): ");
+		int length = sc.nextInt();
+		arr = new int[length];
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+}

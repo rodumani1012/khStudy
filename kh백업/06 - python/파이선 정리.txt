@@ -1,0 +1,5 @@
+REPL
+R : Read (읽어서)
+E : Eval (계산해서)
+P : Print (출력해서)
+L : Loop (반복한다)

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="project.mapper">
+
+	
+	<insert id="project_new" parameterType="map">
+		INSERT INTO PRJ_INFO VALUES(PRJSEQ.NEXTVAL, #{prj_name}, '임의 입력 중')
+	</insert>
+	<insert id="project_new_in_user" parameterType="Integer">
+		INSERT INTO PRJ_IN_USER VALUES(#{user_num},PRJSEQ.CURRVAL)
+	</insert>
+	<insert id="project_new_board1">
+		INSERT INTO PRJ_BOARD VALUES(BOARDSEQ.NEXTVAL, PRJSEQ.CURRVAL, 'before')
+	</insert>
+	<insert id="project_new_board2">
+		INSERT INTO PRJ_BOARD VALUES(BOARDSEQ.NEXTVAL, PRJSEQ.CURRVAL, 'ing')
+	</insert>
+	<insert id="project_new_board3">
+		INSERT INTO PRJ_BOARD VALUES(BOARDSEQ.NEXTVAL, PRJSEQ.CURRVAL, 'after')
+	</insert>
+		
+	<select id="project_list" parameterType="Integer" resultType="prj_info_dto">
+		SELECT * FROM PRJ_INFO JOIN (SELECT PRJ_NUM FROM PRJ_IN_USER WHERE USER_NUM = #{user_num}) USING (PRJ_NUM)
+	</select>
+	
+	<select id="project_board" parameterType="Integer" resultType="prj_board_dto">
+		SELECT * FROM PRJ_BOARD WHERE PRJ_NUM = #{prj_num}
+	</select>
+	
+</mapper>

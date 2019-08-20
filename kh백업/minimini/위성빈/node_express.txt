@@ -1,0 +1,215 @@
+node.js React MongdoDB
+
+VS Code 
+
+@node js
+자바스크립트를 기반으로한  확장성이 있는 네트워크 어플리케이션 소프트웨어 플랫폼이다.
+자바스크립트를 서버에서도 사용을 할 수가 있도록 설계가 되어 있는 서버사이드 스크립트 언어로 서버
+개발을 위해서 나온 언어
+노드 = 백엔드 라고 하기보다는 노드를 통해서 서버도! 만들수 있다고 이해하는게 좋다
+노드js가 가진 내장 HTTP 서버 라이브러리를 활용하여 아파치같은 별도의 소프트웨어가
+필요없이 동작할 수있을 주요기능으로 하고있습니다.
+
+node.js는 첫번째로 REPL을 통해서 런타임(프로그래밍언어가 구동되는 환경) 
+Read Evaluate Print Loop
+
++) node 설치 
++) API 간략설명 (module,  Http class, url, Console)
+
+@주요 메소드 
+1) url.parse
+url.parse(urlStr, [parseQueryString], [slashesDenoteHost]) 메소드를 이용하면 url과 관련된 객체를 가져옵니다. 그 객체에 query?속성도 있습니다. 하지만 문자열이죠. 그런데 두 번째 인자인 parseQueryString의 값을?true로 주면 query 속성을 문자열이 아닌 객체로 가져옵니다. 이렇듯?url 객체로도 쿼리를 객체형식으로 가져올 수 있다
+
+2) Module
+Node.js는 파일?하나하나가 모듈로 기능한다.. 모듈은 각각 독립적인 소프트웨어로 한 파일에서 다른 파일로 module.exports를 사용하여 참조시킬 수 있다.
+
+3) Http 
+node js가 가진 내장객체
+net.Server 클래스의 server.listen()과 같은 기능 -> TCP 또는 IPC 서버를 만드는데 사용된다
+
+4) Console
+
+Node.js는?모듈?시스템을 구축하고 있습니다. 모듈이란, 필요한 것만 불러오는 것이라고 생각하면 됩니다. http 서버가 필요하니?http?모듈을?require?메소드를 통해서 불러와 http 변수에 저장하였습니다. 
+시간에 말했던?npm의 ?패키지가 이와 비슷한 개념입니다. 단, http 패키지는 Node.js 자체에서 기본적으로 제공하는 패키지이기 때문에 npm install http로 따로 설치할 필요가 없습니다. 서버가 실행된 후의 동작을?콜백 함수로 등록합니다. 
+http 패키지의?createServer?메소드의 인자로 넣어주면 됩니다. 그리고 3000번 포트에 연결(listen)합니다
+
+5) Template literal (``)
+
+Literal : 변수에 넣지않는 데이터 그 자체, 정보를 표현하는 한 방법 
+
+개행문자(\n)을 사용하지 않아도 되고, +를 사용하여 변수와 문자열을 분리하지않고 
+el표현법으로 ${}을 사용하여 변수를 불러올 수 있다
+
+
+===========================================================
+
+@작업환경 설정
+
+https://nodejs.org/en/download/
+위 사이트에 접속해서 본인 컴퓨터 사양에맞는 installer 설치!
+
+설치가 잘 되었다면 cmd(혹은 터미널)에서 node 명령어 입력!
+ 명령어 대기상태가 되었다면 설치가 성공적으로됨!! 
+
+연1) 1+2 , 1*2, 1-1, 등의 간단한 REPL해보기 
+연2) console.log(‘Hello World’)
+
+@node.js예제 연습3)
+
+[server.js]
+var http = require('http');
+
+http.createServer(function(request,response){        // 새 웹서버 객체 반환
+    //callback 함수 내부 -> request가 들어왔을때의 콜백함수 
+    response.end('Hello world!');
+}).listen(3000);                                    // server.listen(port, [name], [callback]);
+
+
+(+)
+<새로운 문법의 콜백함수>
+http.createServer((request, response) => {
+    return request.on('error', (err) => {
+        console.log(err);
+    }).on('data', (data) => {
+        console.log(data);
+    }).on('end', () => {
+        response.on('err',(err)=>{
+            console.log(err);
+        });
+        response.end('Hello, World!');
+    });
+}).listen(3000);
+
+
+terminal (or cmd)
+>> node server.js
+
+
+연습4) 파일 열어보기 
+var http = require('http');
+var fs = require('fs');
+var url = require('url');
+
+http.createServer(function(request, response){
+    var _url = request.url;
+    var pathName = url.parse(_url, true).pathname;
+    var queryData = url.parse(_url, true).query;
+
+    if(pathName === '/main'){
+        response.end(fs.readFileSync(__dirname + pathName + '.html'));
+    }else{
+        response.end('Hello World');
+    }
+    //response.write('Hello world~~');
+    console.log('server listening on 3000 port');
+}).listen(3000);
+
+
+===========================================================
+
+@npm 
+node pacakage manager로써 Spring에서의 Maven과 같은 프로젝트 관리도구
+
+
+*주요기능 
+- NPMSearch에서 탐색가능한 node.js 패키지/모듈 저장소
+-node.js 패키지 설치/호환성 관리를 할수 있는 커맨드라인 유틸리티 
+
+
+* 주요명령어 
+1. npm init
+
+package.json을 생성하는 명령어, 새로운 프로젝트나 패키지를 만들때 사용 
+
+2. npm install 패키지 @버전
+
+ (+) 옵션 
+?save 또는 -S : dependencies에 추가, 
+?save-dev 또는 -D : devDependencies에 추가
+-g : global 패키지에 추가 (글로벌패키지에 추가하면 해당 프로젝트 뿐만아니라 다른 프로젝트에서도 사용할수있다)
+
+
+3, npm (명령어) help
+
+명령어의 역할과 옵션에 대해 궁금할때 사용하기
+
+4. npm run
+
+package.json의 scripts이외의 
+
+5. npm start
+
+
+===========================================================
+
+
+@Express 
+node.js의 framework (java spring) 작업을 쉽게 하기위한 라이브러리의 집합이다 라고 이해하면 된다!
+
+express를 이용하여  서버구축, 쿼리스트링, 뷰 구축을 하는 기능을 지원 
+이때 view engine으로는 총 5가지를 지원 
+
+- Haml
+- jade
+- EJS
+- Coffeecup
+- jQuery templates
+
+
+*다운로드하기 
+npm install express ?save
+
+
+@(연습2)
+node.js에서 작성한 서버 열기 연습문제 express로 작성해보기 
+
+var http = require('http');
+var express = require('express');
+var app = express();
+
+var server = app.listen(3000, function(){
+    console.log('Express server has started on port 3000');    
+});
+
+
+알고가기  
+* router : 네트워크와 네트워크 가의 경로를 설정해주는 장치
+
+
+@연습3: 페이지 렌더링
+[server.js]
+//express
+var http = require('http');
+var express = require('express');
+var app = express();
+var router = require('./router/app')(app);      //라우터 모듈인 app.js 를 불러와서 app에 전달해줍니다
+
+app.set('views', __dirname + '/views');         //서버가 읽을 수 있도록 HTML 의 위치를 정의해줍니다.
+app.use(express.static('public'));              //HTML 에서 사용되는 .js 파일, css 파일, image 파일 등을 가르킵니다.
+                                                //서버에서 정적파일을 다루기 위해선, express.static() 메소드를 사용
+    
+var server = app.listen(3000, function(){
+    console.log('Express server has started on port 3000');    
+});
+
+
+[app.js]
+module.exports = function(app){
+    app.get('/', function(req, res){
+        //res.send('Hello World');                // 글자 송출
+        res.render('index.html');               // 렌더링 (view/index.html)
+    });
+    app.get('/bye', function(req, res){
+        res.send('say goodnight');
+    });
+}
+
+
+* post방식 데이터 처리? 
+	?	body-parser?? POST 데이터 처리
+	>> npm install body-parser  : body-parser은 POST요청 데이터를 추출하는 미들웨어임
+
+
+     app.post('/', function(req, res){
+	res.send('Hello world');
+     })

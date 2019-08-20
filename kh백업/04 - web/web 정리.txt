@@ -1,0 +1,32 @@
+web server : 정적 데이터를 응답해줌(html, image, file..)
+was(Web Application Server) : 동적 데이터를 응답해줌(jsp/servlet,jsp...)
+
+context = web application
+
+Model : 각각 기능을 나눔
+View : 보이는 것
+Controller : 요청 받아서 요청에 맞는 화면을 리턴해줌(커맨드 값을 읽어서 값에 따른 뷰를 보여준다)
+
+MVC pattern 1 : 현재 화면에서 바로 DB에 접근하는 것
+
+jsp : html안에 자바코드가 들어감(자바코드를 html 코드로 변환해줌)
+서블릿 : 자바코드 안에 html이 들어감(html코드를 자바코드로 변환해줌)
+
+web.xml(Deployment Descriptor)의 역할 : 배포 기술자. 웹프로젝트의 설정을 도와주는 애.
+client
+server(ex 아파치톰캣) : servlet 컨테이너. servlet에 관한 것을 도와줌
+servlet : MVC에서 컨트롤러를 담당
+
+서블릿의 라이프사이클(생명주기)
+객체(생성자) 호출 -> init()실행 -> doGet() 또는 doPost()실행 -> destroy()실행
+
+jar 다운로드 링크
+https://tomcat.apache.org/download-taglibs.cgi
+JSTL 쓸 때 필요한 jar
+- taglibs-standard-spec-1.2.5.jar
+   - taglibs-standard-impl-1.2.5.jar
+   - taglibs-standard-jstlel-1.2.5.jar
+
+xml 쓸 때 필요한 jar
+ - xalan-2.7.1.jar
+   - serializer-2.7.1.jar

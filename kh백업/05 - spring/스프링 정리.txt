@@ -1,0 +1,2 @@
+Spring Framework : POJO기반의 경량 컨테이너
+특징 : DI/IOC, AOP, OCP
